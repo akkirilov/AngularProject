@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+
+import { AuthenticationService } from '../core/services/authentication.service';
+
+@Component({
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.css']
+})
+export class NavigationComponent implements OnInit {
+  
+  constructor(public authService : AuthenticationService, 
+          private router: Router) { }
+
+  ngOnInit() {  }
+  
+  logout() {
+      if (!this.authService.isLogged()) {
+          this.router.navigate(['/login']);
+      } else {
+          this.authService
+              .logout()
+              .subscribe(data => {
+                  console.log(data);
+                  sessionStorage.clear();
+                  this.router.navigate(['/login']);
+              },
+              error => {
+                  console.log(error);
+              });
+      }
+  }
+
+}
