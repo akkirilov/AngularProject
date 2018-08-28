@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { APP_KEY, APP_SECRET, API_URL } from '../../app.constants';
+
 import { LoginModel } from '../models/login';
 import { RegisterModel } from '../models/register';
 
@@ -9,12 +11,10 @@ import { RegisterModel } from '../models/register';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    private appKey : string = 'kid_BJ0q11jIX';
-    private appSecret : string = '071345c3bdb44e7aa3b00eb2f1a07f1f';
 
-    private registerUrl : string = `https://baas.kinvey.com/user/${this.appKey}`;
-    private loginUrl : string = `https://baas.kinvey.com/user/${this.appKey}/login`;
-    private logoutUrl : string = `https://baas.kinvey.com/user/${this.appKey}/_logout`;
+    private registerUrl : string = `${API_URL}user/${APP_KEY}`;
+    private loginUrl : string = `${API_URL}user/${APP_KEY}/login`;
+    private logoutUrl : string = `${API_URL}user/${APP_KEY}/_logout`;
 
     constructor(private http : HttpClient) {  }
     
@@ -23,7 +23,6 @@ export class AuthenticationService {
     }
     
     login(loginModel : LoginModel) : Observable<Object> {
-
         return this.http.post<Object>(this.loginUrl, JSON.stringify(loginModel));
     }
     

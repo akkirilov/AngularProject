@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
     errorMsg : string;
 
     loginForm = new FormGroup({
-        username: new FormControl('', [Validators.required, Validators.pattern(/^[A-Z][A-Za-z0-9]+$/)]),
-        password: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{4,16}$/)])
+        username: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{3,}$/)]),
+        password: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{3,16}$/)])
     });
     
     constructor(private authService : AuthenticationService,
@@ -33,22 +33,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
       } else {
           this.authService
-              .login(this.loginForm.value)
-              .subscribe(data => {
-                  console.log(data);
-                  if (data['_kmd'] && data['_kmd']['authtoken']) {
-                      sessionStorage.setItem('authtoken', data['_kmd']['authtoken']);
-                      sessionStorage.setItem('id', data['_id']);
-                      sessionStorage.setItem('username', data['username']);
-                      this.clearError();
-                      this.router.navigate(['/']);
-                  }
-              },
-              error => {
-                  console.log(error);
-                  this.loginForm.controls.password.setValue('');
-                  this.errorMsg = error['error']['description'];
-              })
+              .login(this.loginForm.value).subscribe();
           }
       }
 }

@@ -23,7 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/bootstrap.css",
+              "src/assets/site.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
