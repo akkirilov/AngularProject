@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HotelsModule } from './components/hotels/hotels.module';
 import { AuthenticationModule } from '../app/components/authentication/authentication.module';
 
-import { AuthGuard } from './auth.guard'; 
+import { AuthGuard } from './core/guards/auth/auth.guard'; 
 
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './components/landing/home/home.component';
 
 const routes : Routes = [
        {path: '', component: HomeComponent },

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { APP_KEY, APP_SECRET, API_URL } from '../../app.constants';
+import { APP_KEY, APP_SECRET, API_URL } from '../constants/api.constants';
 
 import { LoginModel } from '../models/login';
 import { RegisterModel } from '../models/register';
@@ -17,6 +17,10 @@ export class AuthenticationService {
     private logoutUrl : string = `${API_URL}user/${APP_KEY}/_logout`;
 
     constructor(private http : HttpClient) {  }
+    
+    getBasicToken() {
+        return this.login({username: 'sys', password: 'aaa'});
+    }
     
     isLogged() : boolean {
         return sessionStorage.getItem('authtoken') != undefined;

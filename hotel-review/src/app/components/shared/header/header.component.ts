@@ -22,7 +22,10 @@ export class HeaderComponent implements OnInit {
           this.authService
               .logout()
               .subscribe(data => {
-                  sessionStorage.clear();
+                  sessionStorage.removeItem('id');
+                  sessionStorage.removeItem('username');
+                  sessionStorage.removeItem('authtoken');
+                  sessionStorage.removeItem('role');
                   this.router.navigate(['/auth/login']);
               },
               error => {

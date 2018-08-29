@@ -1,0 +1,14 @@
+<div class="row">
+<div class="col-md-10">
+<p class="white">{{comment.text}}</p>
+<span class="small italic">
+Posted by {{comment.username}} on {{comment._kmd.ect | date}}
+</span> 
+&nbsp;&nbsp;
+</div>
+<div class="col-md-2">
+<span>
+{{comment.likeUsers.length}} likes <img *ngIf="canLike" (click)="like()" class="icon" src="https://www.shareicon.net/data/256x256/2017/06/05/886714_like_512x512.png" />
+</span>
+</div>
+</div>

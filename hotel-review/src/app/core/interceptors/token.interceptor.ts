@@ -11,7 +11,7 @@ import { tap } from 'rxjs/operators';
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 
-import { APP_KEY, APP_SECRET } from '../../app.constants';
+import { APP_KEY, APP_SECRET } from '../constants/api.constants';
 
 const basicUrls = [
         APP_KEY,
@@ -38,6 +38,13 @@ export class TokenInterceptor implements HttpInterceptor {
                     'Content-Type': 'application/json' 
                 }
             });
+        } else if (!isBasic && sessionStorage.getItem('basicauthtoken')) {
+            request = request.clone({
+                setHeaders : {
+                    'Authorization': `Kinvey ${sessionStorage.getItem('basicauthtoken')}`,
+                    'Content-Type': 'application/json' 
+                }
+            });
         } else {
             request = request.clone({
                 setHeaders : {
@@ -53,11 +60,18 @@ export class TokenInterceptor implements HttpInterceptor {
                     this.router.navigate(['/auth/login']);
                     this.toastr.success('Successfull registration!');
                 } else if (res.url.endsWith('login')) {
-                    sessionStorage.setItem('authtoken', res['body']['_kmd']['authtoken']);
-                    sessionStorage.setItem('id', res['body']['_id']);
-                    sessionStorage.setItem('username', res['body']['username']);
-                    this.router.navigate(['/']);
-                    this.toastr.success('Welcome, ' + res['body']['username'] + '!');
+                    if (res['body']['username'] == 'sys') {
+                        sessionStorage.setItem('basicauthtoken', res['body']['_kmd']['authtoken']);
+                    } else {
+                        sessionStorage.setItem('authtoken', res['body']['_kmd']['authtoken']);
+                        sessionStorage.setItem('id', res['body']['_id']);
+                        sessionStorage.setItem('username', res['body']['username']);
+                        sessionStorage.setItem('role', res['body']['role']);
+                        this.router.navigate(['/']);
+                        this.toastr.success('Welcome, ' + res['body']['username'] + '!');
+                    }
+                } else if (res.url.endsWith('/hotels')) {
+                    this.router.navigate(['/hotels']);
                 }
             }
         }));

@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/']);
       } else {
           delete this.registerForm.value.confirmPassword;
-          this.authService.register(this.registerForm.value).subscribe()
+          this.registerForm.value.role = 'user';
+          this.authService.register(this.registerForm.value).subscribe();
           }
       }
 

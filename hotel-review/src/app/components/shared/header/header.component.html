@@ -7,23 +7,20 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/hotels/h" >Hotels/h</a>
-      </li>
        <li class="nav-item">
         <a class="nav-link" routerLink="/hotels" >Hotels</a>
       </li>
-      <li class="nav-item">
-        <a *ngIf="authService.isLogged()" class="nav-link" routerLink="/" >Home</a>
+      <li *ngIf="!authService.isLogged()" class="nav-item">
+        <a routerLink="/auth/login" class="nav-link">Login</a>
       </li>
-      <li class="nav-item">
-        <a *ngIf="!authService.isLogged()" routerLink="/auth/login" class="nav-link">Login</a>
+      <li *ngIf="!authService.isLogged()" class="nav-item">
+        <a routerLink="/auth/register" class="nav-link">Register</a>
       </li>
-      <li class="nav-item">
-        <a *ngIf="!authService.isLogged()" routerLink="/auth/register" class="nav-link">Register</a>
+      <li *ngIf="authService.isLogged()" class="nav-item">
+        <a routerLink="/hotels/add" class="nav-link">Add Hotel</a>
       </li>
-      <li class="nav-item">
-        <a *ngIf="authService.isLogged()" (click)="logout()" class="nav-link">Logout</a>
+      <li *ngIf="authService.isLogged()" class="nav-item">
+        <a (click)="logout()" class="nav-link">Logout</a>
       </li>
     </ul>
   </div>

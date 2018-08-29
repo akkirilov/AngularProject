@@ -34,6 +34,6 @@ export class LoginComponent implements OnInit {
       } else {
           this.authService
               .login(this.loginForm.value).subscribe();
-          }
       }
+  }
 }

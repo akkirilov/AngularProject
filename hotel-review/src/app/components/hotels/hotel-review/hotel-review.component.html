@@ -1,0 +1,52 @@
+<div *ngIf="hotel">
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">{{hotel.name}}</h3>    
+      </div>
+      <div class="panel-heading">
+         <button *ngIf="canEdit" routerLink="/hotels/edit/{{hotel._id}}" class="btn btn-sm btn-success">Edit</button>
+      </div>
+      <div class="panel-body">
+          <div class="row">
+              <div class="col-md-5">
+	              <div class="row">
+		                  <img class="thumbnail" src="{{hotel.imageUrl}}">
+		          </div>
+              	  <br>
+	              <div *ngIf="canVote" class="row">
+	                  Rate this hotel:  &nbsp;&nbsp;
+		              <div class="form-group">
+		                  <form [formGroup]="voteForm" (ngSubmit)="vote()">
+		                  	<select formControlName="raiting">
+		                  		<option [value]="0">0</option>
+		                  		<option [value]="1">1</option>
+		                  		<option [value]="2">2</option>
+		                  		<option [value]="3">3</option>
+		                  		<option [value]="4">4</option>
+		                  		<option [value]="5">5</option>
+		                  	</select>
+		                  	<span>&nbsp;&nbsp;</span>
+		                  	<button [disabled]="voteForm.invalid" type="submit" class="btn btn-sm btn-success">Vote!</button>
+		                  </form>
+		              </div>
+	              </div>
+	              <div *ngIf="!canVote" class="row">
+	              	You already vote for this hotel. 
+	              </div>
+	          </div> 
+              <div class="col-md-7">
+                  <ul class="list-group">
+                      <li class="list-group-item">City: {{hotel.city}}</li>
+                      <li class="list-group-item">Raiting: {{hotel.raiting | number | number : '1.2-2'}} / 5 with {{hotel.voteUsers.length}} votes</li>
+                      <li class="list-group-item">Description: {{hotel.description}}</li>
+                      <li class="list-group-item">Contact: <a target="blank" href="{{hotel.hotelUrl}}">Official web site</a></li>
+                      <li class="list-group-item">Added by: {{hotel.username}}, on {{hotel._kmd.ect | date}}</li>
+                  </ul>
+                  <br>
+              </div>  
+          </div>
+      </div>
+      <br><br>
+  <app-comments></app-comments>
+  </div> 
+    </div> 
