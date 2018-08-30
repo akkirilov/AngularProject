@@ -26,6 +26,10 @@ export class AuthenticationService {
         return sessionStorage.getItem('authtoken') != undefined;
     }
     
+    isAdmin() {
+        return (sessionStorage.getItem('role') == 'admin' && '5b85304d40c95455d51807b9' == sessionStorage.getItem('id'));
+    }
+    
     login(loginModel : LoginModel) : Observable<Object> {
         return this.http.post<Object>(this.loginUrl, JSON.stringify(loginModel));
     }

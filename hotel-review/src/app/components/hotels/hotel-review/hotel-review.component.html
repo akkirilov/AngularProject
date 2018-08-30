@@ -1,10 +1,14 @@
 <div *ngIf="hotel">
   <div class="panel panel-default">
+  <div [@fromLeft]>
       <div class="panel-heading">
-          <h3 class="panel-title">{{hotel.name}}</h3>    
+          <h3 class="panel-title">
+          {{hotel.name}}&nbsp;&nbsp;
+          <img *ngIf="canEdit" routerLink="/hotels/edit/{{hotel._id}}" class="icon edit-icon" src="http://www.iconhot.com/icon/png/bunch-cool-bluish-icons/256/edit-29.png" />
+          <img *ngIf="canEdit" routerLink="/hotels/delete/{{hotel._id}}" class="icon delete-icon" src="https://cdn2.iconfinder.com/data/icons/e-business-helper/240/627249-delete3-256.png" />
+          </h3>    
       </div>
       <div class="panel-heading">
-         <button *ngIf="canEdit" routerLink="/hotels/edit/{{hotel._id}}" class="btn btn-sm btn-success">Edit</button>
       </div>
       <div class="panel-body">
           <div class="row">
@@ -40,11 +44,12 @@
                       <li class="list-group-item">Raiting: {{hotel.raiting | number | number : '1.2-2'}} / 5 with {{hotel.voteUsers.length}} votes</li>
                       <li class="list-group-item">Description: {{hotel.description}}</li>
                       <li class="list-group-item">Contact: <a target="blank" href="{{hotel.hotelUrl}}">Official web site</a></li>
-                      <li class="list-group-item">Added by: {{hotel.username}}, on {{hotel._kmd.ect | date}}</li>
+                      <li class="list-group-item">Added by: <a routerLink="/users/profile/{{hotel._acl.creator}}">{{hotel.username}}</a>, on {{hotel._kmd.ect | date}}</li>
                   </ul>
                   <br>
               </div>  
           </div>
+      </div>
       </div>
       <br><br>
   <app-comments></app-comments>

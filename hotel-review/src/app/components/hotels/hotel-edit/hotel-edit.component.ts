@@ -8,10 +8,13 @@ import { HotelsService } from '../../../core/services/hotels.service';
 
 import { HotelModel } from '../../../core/models/hotel';
 
+import { appAnimations } from '../../../app.animations';
+
 @Component({
   selector: 'app-hotel-edit',
   templateUrl: './hotel-edit.component.html',
-  styleUrls: ['./hotel-edit.component.css']
+  styleUrls: ['./hotel-edit.component.css'],
+  animations: [appAnimations]
 })
 export class HotelEditComponent implements OnInit {
     hotel : HotelModel;
@@ -50,7 +53,7 @@ export class HotelEditComponent implements OnInit {
         this.hotel.imageUrl = this.hotelForm.value.imageUrl;
         this.hotel.hotelUrl = this.hotelForm.value.hotelUrl;
         this.hotelsService.edit(this.hotel).subscribe(data => {
-            this.router.navigate(['/hotels']);
+            this.router.navigate([`/hotels/review/${this.hotel._id}`]);
             this.toastr.success('Successfully edit ' +  this.hotel.name + '!');
         });
     }

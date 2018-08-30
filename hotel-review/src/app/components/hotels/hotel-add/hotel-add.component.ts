@@ -6,10 +6,13 @@ import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import { HotelsService } from '../../../core/services/hotels.service';
 
+import { appAnimations } from '../../../app.animations';
+
 @Component({
   selector: 'app-hotel-add',
   templateUrl: './hotel-add.component.html',
-  styleUrls: ['./hotel-add.component.css']
+  styleUrls: ['./hotel-add.component.css'],
+  animations: [appAnimations]
 })
 export class HotelAddComponent implements OnInit {
     hotelForm = new FormGroup({

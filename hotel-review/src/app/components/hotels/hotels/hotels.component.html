@@ -4,7 +4,7 @@
   </div> 
   <div class="panel-body">
       <div class="row">
-          <div *ngFor="let hotel of hotels" class="col-md-2">
+          <div [@fromLeft] *ngFor="let hotel of hotels" class="col-md-2">
 				<app-hotel [hotel]="hotel"></app-hotel>
           </div>    
       </div>    

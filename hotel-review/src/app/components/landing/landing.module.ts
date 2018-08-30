@@ -5,6 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HomeHotelsComponent } from './home-hotels/home-hotels.component';
 import { HomeHotelComponent } from './home-hotel/home-hotel.component';
+import { HomeCommentsComponent } from './home-comments/home-comments.component';
+import { HomeCommentComponent } from './home-comment/home-comment.component';
+import { BannedComponent } from './banned/banned.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -14,7 +18,11 @@ import { HomeHotelComponent } from './home-hotel/home-hotel.component';
   declarations: [
     HomeComponent,
     HomeHotelsComponent,
-    HomeHotelComponent
+    HomeHotelComponent,
+    HomeCommentsComponent,
+    HomeCommentComponent,
+    BannedComponent,
+    NotFoundComponent
   ],
   exports: [
     HomeComponent

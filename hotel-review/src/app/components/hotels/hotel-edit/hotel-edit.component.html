@@ -1,5 +1,5 @@
-<h1>Edit hotel!</h1>
-  <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+<h1 [@fromLeft]>Edit hotel!</h1>
+  <form [@fromRight] [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name</label>
       <input formControlName="name" type="text" class="form-control" id="name" 

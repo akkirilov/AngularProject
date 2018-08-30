@@ -12,6 +12,7 @@ import { HotelsComponent } from './hotels/hotels.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { HotelAddComponent } from './hotel-add/hotel-add.component';
 import { HotelEditComponent } from './hotel-edit/hotel-edit.component';
+import { HotelDeleteComponent } from './hotel-delete/hotel-delete.component';
 import { HotelReviewComponent } from './hotel-review/hotel-review.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { HotelReviewComponent } from './hotel-review/hotel-review.component';
     HotelAddComponent,
     HotelsComponent,
     HotelEditComponent,
+    HotelDeleteComponent,
     HotelReviewComponent
   ],
   exports: [

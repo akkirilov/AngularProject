@@ -63,12 +63,17 @@ export class TokenInterceptor implements HttpInterceptor {
                     if (res['body']['username'] == 'sys') {
                         sessionStorage.setItem('basicauthtoken', res['body']['_kmd']['authtoken']);
                     } else {
-                        sessionStorage.setItem('authtoken', res['body']['_kmd']['authtoken']);
-                        sessionStorage.setItem('id', res['body']['_id']);
-                        sessionStorage.setItem('username', res['body']['username']);
-                        sessionStorage.setItem('role', res['body']['role']);
-                        this.router.navigate(['/']);
-                        this.toastr.success('Welcome, ' + res['body']['username'] + '!');
+                        if (res['body']['isBanned']) {
+                            this.router.navigate(['/banned']);
+                        } else {
+                            sessionStorage.setItem('authtoken', res['body']['_kmd']['authtoken']);
+                            sessionStorage.setItem('id', res['body']['_id']);
+                            sessionStorage.setItem('username', res['body']['username']);
+                            sessionStorage.setItem('email', res['body']['email']);
+                            sessionStorage.setItem('role', res['body']['role']);
+                            this.router.navigate(['/']);
+                            this.toastr.success('Welcome, ' + res['body']['username'] + '!');
+                        }
                     }
                 } else if (res.url.endsWith('/hotels')) {
                     this.router.navigate(['/hotels']);

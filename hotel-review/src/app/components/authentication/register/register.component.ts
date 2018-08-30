@@ -5,10 +5,13 @@ import {Router} from "@angular/router";
 
 import { AuthenticationService } from '../../../core/services/authentication.service';
 
+import { appAnimations } from '../../../app.animations';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  animations: [appAnimations]
 })
 export class RegisterComponent implements OnInit {
   
@@ -39,6 +42,7 @@ export class RegisterComponent implements OnInit {
       } else {
           delete this.registerForm.value.confirmPassword;
           this.registerForm.value.role = 'user';
+          this.registerForm.value.isBanned = false;
           this.authService.register(this.registerForm.value).subscribe();
           }
       }

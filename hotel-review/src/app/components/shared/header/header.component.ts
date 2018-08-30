@@ -9,11 +9,13 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+  userId : string;
   constructor(public authService : AuthenticationService, 
           private router: Router) { }
-
-  ngOnInit() {  }
+  
+  ngOnInit() { 
+      this.userId = sessionStorage.getItem('id');
+  }
   
   logout() {
       if (!this.authService.isLogged()) {
@@ -26,6 +28,7 @@ export class HeaderComponent implements OnInit {
                   sessionStorage.removeItem('username');
                   sessionStorage.removeItem('authtoken');
                   sessionStorage.removeItem('role');
+                  sessionStorage.removeItem('email');
                   this.router.navigate(['/auth/login']);
               },
               error => {

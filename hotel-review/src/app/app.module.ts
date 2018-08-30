@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,27 +10,29 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthenticationModule } from './components/authentication/authentication.module';
 import { SharedModule } from './components/shared/shared.module';
 import { LandingModule } from './components/landing/landing.module';
+import { UsersModule } from './components/users/users.module';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+
 import { AuthenticationService } from './core/services/authentication.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
-BrowserAnimationsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     SharedModule,
-    LandingModule
+    LandingModule,
+    UsersModule
   ],
   providers: [
     AuthenticationService,

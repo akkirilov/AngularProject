@@ -5,10 +5,13 @@ import { Router } from "@angular/router";
 
 import { AuthenticationService } from '../../../core/services/authentication.service';
 
+import { appAnimations } from '../../../app.animations';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [appAnimations]
 })
 export class LoginComponent implements OnInit {
     errorMsg : string;

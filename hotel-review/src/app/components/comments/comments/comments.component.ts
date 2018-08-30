@@ -7,10 +7,13 @@ import { CommentsService } from '../../../core/services/comments.service';
 
 import { CommentModel } from '../../../core/models/comment';
 
+import { appAnimations } from '../../../app.animations';
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.css'],
+  animations: [appAnimations]
 })
 export class CommentsComponent implements OnInit {
     hotelId : string;

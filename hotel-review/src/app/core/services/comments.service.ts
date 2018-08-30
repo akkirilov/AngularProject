@@ -17,6 +17,14 @@ export class CommentsService {
     getAllForHotel(hotelId : string) : Observable<CommentModel[]> {
         return this.http.get<CommentModel[]>(`${this.commentsUrl}?query={"hotelId":"${hotelId}"}`);
     }
+
+    getAllByUserId(userId : string) : Observable<CommentModel[]> {
+        return this.http.get<CommentModel[]>(`${this.commentsUrl}?query={"userId":"${userId}"}`);
+    }
+
+    getLastThree() : Observable<CommentModel[]> {
+        return this.http.get<CommentModel[]>(`${this.commentsUrl}?query={}&sort={"_kmd": -1}&limit=3`);
+    }
     
     addComment(commentData : CommentModel) {
         return this.http.post<CommentModel>(`${this.commentsUrl}`, commentData);

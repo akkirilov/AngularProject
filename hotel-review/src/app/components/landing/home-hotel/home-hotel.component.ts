@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { AuthenticationService } from '../../../core/services/authentication.service';
+
 import { HotelModel } from '../../../core/models/hotel';
 
 @Component({
@@ -9,7 +11,7 @@ import { HotelModel } from '../../../core/models/hotel';
 })
 export class HomeHotelComponent implements OnInit {
   @Input() hotel : HotelModel;
-  constructor() { }
+  constructor(public authService : AuthenticationService) { }
 
   ngOnInit() {
   }

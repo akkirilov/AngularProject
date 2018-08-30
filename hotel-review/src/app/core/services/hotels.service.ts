@@ -23,6 +23,10 @@ export class HotelsService {
         return this.http.get<HotelModel[]>(this.hotelsUrl);
     }
     
+    getAllByUserId(userId : string) : Observable<HotelModel[]> {
+        return this.http.get<HotelModel[]>(`${this.hotelsUrl}?query={"_acl":{"creator":"${userId}"}}`);
+    }
+    
     getById(id : string) : Observable<HotelModel> {
         return this.http.get<HotelModel>(`${this.hotelsUrl}/${id}`);
     }

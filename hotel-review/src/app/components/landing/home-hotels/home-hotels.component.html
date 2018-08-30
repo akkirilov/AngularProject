@@ -1,10 +1,11 @@
+
 <div class="panel panel-default">
   <div class="panel-heading">
       <h3 class="panel-title">Top 3 hotels in Bulgaria</h3>    
   </div> 
   <div class="panel-body">
       <div class="row">
-          <div *ngFor="let hotel of hotels" class="col-md-4">
+          <div [@fromLeft] *ngFor="let hotel of hotels" class="col-md-4">
 				<app-home-hotel [hotel]="hotel"></app-home-hotel>
           </div>    
       </div>    

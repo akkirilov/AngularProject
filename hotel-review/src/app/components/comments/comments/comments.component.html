@@ -1,7 +1,7 @@
 <div *ngIf="comments" class="col-md-12">
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let comment of comments">
-        	<app-comment [comment]="comment"></app-comment>
+        <li [@fromRight] class="list-group-item" *ngFor="let comment of comments">
+        	<app-comment *ngIf="comment" [comment]="comment"></app-comment>
         </li>
         <li class="list-group-item">
         	  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
