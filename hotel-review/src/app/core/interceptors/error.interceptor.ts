@@ -20,10 +20,11 @@ export class ErrorInterceptor implements HttpInterceptor {
         .pipe(catchError((err : HttpErrorResponse) => {
 
           switch (err.status) {
-            case 400:
-              break;
-            case 404:
-                this.toastr.error(err.error.description);
+            case 401:
+                if (!err.url.endsWith('/hotels') 
+                        && !err.url.endsWith('&limit=3')) {
+                    this.toastr.error(err.error.description);
+                }
               break;
             default:
                 this.toastr.error(err.error.description);

@@ -1,10 +1,10 @@
 <div *ngIf="user">
 <h1 *ngIf="user.isDeleted" class="panel-title">User is deleted!</h1>
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div [@fromLeft] class="panel-heading">
       <h3 class="panel-title">User data</h3>    
   </div> 
-      <div [@fromLeft] class="list-group">
+      <div [@fromRight] class="list-group">
       	<div  class="list-group-item">
       		<p>Username: {{user.username}}</p>
       		<p>Email: {{user.email}}</p>
@@ -19,7 +19,7 @@
 
 <br /><br />
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div [@fromLeft] class="panel-heading">
       <h3 class="panel-title">Added hotels</h3> 
   </div> 
   <app-profile-hotels [userId]="user._id"></app-profile-hotels>
@@ -27,9 +27,9 @@
 
 <br /><br />
 <div class="panel panel-default">
-  <div class="panel-heading">
+  <div [@fromLeft] class="panel-heading">
       <h3 class="panel-title">Added comments</h3>    
   </div> 
-  <app-profile-comments [userId]="user._id"></app-profile-comments>   
+  <app-profile-comments [userId]="user._id"></app-profile-comments> 
 </div>
 </div>

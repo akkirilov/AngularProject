@@ -16,12 +16,7 @@ export class HomeComponent implements OnInit {
             private hotelService : HotelsService) { }
     
     ngOnInit() {
-        this.authService.getBasicToken().subscribe()
-//        (data => {
-//            this.hotelService.getTopThree().subscribe(data => {
-//                this.hotels = data;
-//            });
-//        });
+        this.authService.getBasicToken().subscribe();
     }
 
 }

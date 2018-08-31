@@ -9,12 +9,10 @@ import { AuthenticationService } from '../../../core/services/authentication.ser
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userId : string;
   constructor(public authService : AuthenticationService, 
           private router: Router) { }
   
   ngOnInit() { 
-      this.userId = sessionStorage.getItem('id');
   }
   
   logout() {

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { APP_KEY, APP_SECRET, API_URL } from '../constants/api.constants';
 
+import { AuthenticationService } from './authentication.service';
+
 import { HotelModel } from '../models/hotel';
 
 @Injectable({
@@ -13,7 +15,8 @@ export class HotelsService {
     private hotelsUrl : string = `${API_URL}appdata/${APP_KEY}/hotels`;
     private sortThreeByRaitingUrl : string = `${this.hotelsUrl}?query={}&sort={"raiting": -1}&limit=3`;
 
-    constructor(private http : HttpClient) {  }
+    constructor(private http : HttpClient,
+            private authenticationServise : AuthenticationService) {  }
     
     getTopThree() : Observable<HotelModel[]> {
         return this.http.get<HotelModel[]>(this.sortThreeByRaitingUrl);

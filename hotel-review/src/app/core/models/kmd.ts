@@ -1,3 +1,3 @@
 export interface KmdModel {
-    _id : string;
+    ect : string;
 }

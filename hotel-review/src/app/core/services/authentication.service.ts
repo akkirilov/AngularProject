@@ -22,6 +22,10 @@ export class AuthenticationService {
         return this.login({username: 'sys', password: 'aaa'});
     }
     
+    getUserId() {
+        return sessionStorage.getItem('id');
+    }
+    
     isLogged() : boolean {
         return sessionStorage.getItem('authtoken') != undefined;
     }

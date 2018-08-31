@@ -23,7 +23,7 @@
         <a routerLink="/hotels/add" class="nav-link">Add Hotel</a>
       </li>
       <li *ngIf="authService.isLogged()" class="nav-item">
-        <a routerLink="/users/profile/{{userId}}" class="nav-link">Profile</a>
+        <a routerLink="/users/profile/{{authService.getUserId()}}" class="nav-link">Profile</a>
       </li>
       <li *ngIf="authService.isLogged()" class="nav-item">
         <a (click)="logout()" class="nav-link">Logout</a>

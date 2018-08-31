@@ -1,10 +1,24 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-      <h3 class="panel-title">Hotels in Bulgaria</h3>    
+  <div [@fromLeft] class="panel-heading">
+     <h3 class="panel-title">Hotels in Bulgaria</h3> 
+     <div class="row col-md-12">
+        Sort by:  &nbsp;&nbsp;
+     <div *ngIf="authService.isLogged()">
+         	<select>
+         		<option (click)="change($event)" name="sortOpts" value="raiting">Raiting</option>
+         		<option (click)="change($event)" name="sortOpts" value="hotest">Hotest</option>
+         		<option (click)="change($event)" name="sortOpts" value="name">Name</option>
+         	</select>
+     </div>
+     <div *ngIf="!authService.isLogged()">
+     	<a routerLink="/auth/login">Login</a> to see sort options.
+     </div>
+    </div>   
   </div> 
+  <br />
   <div class="panel-body">
       <div class="row">
-          <div [@fromLeft] *ngFor="let hotel of hotels" class="col-md-2">
+          <div [@fromRight] *ngFor="let hotel of hotels" class="col-md-2">
 				<app-hotel [hotel]="hotel"></app-hotel>
           </div>    
       </div>    
