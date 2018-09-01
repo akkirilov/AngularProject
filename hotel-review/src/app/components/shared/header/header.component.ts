@@ -27,7 +27,8 @@ export class HeaderComponent implements OnInit {
                   sessionStorage.removeItem('authtoken');
                   sessionStorage.removeItem('role');
                   sessionStorage.removeItem('email');
-                  this.router.navigate(['/auth/login']);
+                  this.router.navigate(['/blue-screen']);
+                  //this.router.navigate(['/auth/login']);
               },
               error => {
               });
