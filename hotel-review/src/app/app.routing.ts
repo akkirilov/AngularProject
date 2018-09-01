@@ -11,7 +11,7 @@ import { BlueScreenComponent } from './components/landing/blue-screen/blue-scree
 import { BannedComponent } from './components/landing/banned/banned.component';
 import { NotFoundComponent } from './components/landing/not-found/not-found.component';
 
-const routes : Routes = [
+const routes : Routes = [ 
        {path: '', component: HomeComponent },
        {path: 'banned', component: BannedComponent },
 	   {path: 'blue-screen', component: BlueScreenComponent },
